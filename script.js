@@ -3,32 +3,43 @@ const resultArtist = document.getElementById("result-artist");
 const resultPlaylist = document.getElementById('result-playlists');
 
 function requestApi(searchTerm) {
-    const url = `http://luc4sf.github.io/Spotify-Alura/api-artists/artists?name_like=${searchTerm}`
+    const url = `https://luc4sf.github.io/Spotify-Alura/api-artists/artists.json`
     fetch(url)
         .then((response) => response.json())
-        .then((result) => displayResults(result))
+        .then((result) => displayResults(result.artists, searchTerm))
 }
 
-function displayResults(result) {
-    resultPlaylist.classList.add("hidden")
-    const artistName = document.getElementById('artist-name');
-    const artistImage = document.getElementById('artist-img');
+function displayResults(result, searchTerm) {
+    let results = [];
 
     result.forEach(element => {
-        artistName.innerText = element.name;
-        artistImage.src = element.urlImg;
-    });
+        if (element.name.toLowerCase().indexOf(searchTerm) != -1) {
+            results.push(element)
+        }
+    })
 
+    resultPlaylist.classList.add("hidden")
+    const artistName = document.querySelectorAll('#artist-name');
+    const artistImage = document.querySelectorAll('#artist-img');
+    const artistCard = document.querySelectorAll('#artist-card');
+    artistCard.forEach(element => element.classList.add('hidden'));
+    
+    results.forEach((element, index) => {
+        artistName[index].innerText = element.name;
+        artistImage[index].src = element.urlImg;
+        artistCard[index].classList.remove('hidden')
+    });
+    
     resultArtist.classList.remove('hidden');
 }
 
 document.addEventListener('input', function () {
     const searchTerm = searchInput.value.toLowerCase();
     if (searchTerm === '') {
-        resultPlaylist.classList.add('hidden');
-        resultArtist.classList.remove('hidden');
+        resultPlaylist.classList.remove('hidden');
+        resultArtist.classList.add('hidden');
         return
     }
-    
+
     requestApi(searchTerm);
 })

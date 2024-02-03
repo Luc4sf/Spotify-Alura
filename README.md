@@ -2,7 +2,7 @@
 
 [![license mit](https://img.shields.io/github/license/Luc4sf/Spotify-Alura)](https://github.com/Luc4sf/Spotify-Alura/blob/main/LICENSE.md)
 
-> :rocket: Copy of Spotify Website, made as part of "Imersão Front-End Alura"
+> :rocket: Copy of Spotify Website, project made during the "Imersão Front-End Alura".
 
 ## Versioning
 
