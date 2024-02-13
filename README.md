@@ -5,7 +5,7 @@
 > :rocket: Copy of Spotify Website, project made during the "Imersão Front-End Alura".
 > Using HTML and CSS it was developped an interface similar to Spotify's Website, including basic layout elements, styling and content organization.
 > In addition to playing the main interface of Spotify, the project included the implementation of a functional search bar.
-> This was done using JavaScript to capture user inputs and query a JSON file containing information about artists, albums and tracks available on the simulated platform.
+> This was done using JavaScript to capture user inputs and query a JSON file containing information about the artists on the simulated platform.
 
 ## Versioning
 
